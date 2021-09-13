@@ -9,15 +9,16 @@ public class ProductsTest extends BaseTest{
 
     @Test
     public void addOneItem() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Onesie");
+//        assertTrue(productsPage.removeButtonIsDisplayed("Remove"), "Button remove isn't displayed");
         //productsPage.validateNumOfProducts(1);
     }
 
     @Test
     public void removeOneItem() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.removeFromCart("Sauce Labs Backpack");
@@ -25,19 +26,19 @@ public class ProductsTest extends BaseTest{
 
     @Test
     public void sortDescOrderName() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.sortDescOrderName();
+        productsPage.selectOption("Name (Z to A)");
         List<String> names = productsPage.getProductNames();
-        Assert.assertEquals(names.get(0), "Test.allTheThings() T-Shirt (Red)");
-        Assert.assertEquals(names.get(5), "Sauce Labs Backpack");
+        Assert.assertEquals(names.get(0), "Test.allTheThings() T-Shirt (Red)", "Sorting is not correctly performed");
+        Assert.assertEquals(names.get(5), "Sauce Labs Backpack", "Sorting is not correctly performed");
     }
 
     @Test
     public void sortAscOrderName(){
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.sortAscOrderName();
+        productsPage.selectOption("Name (A to Z)");
         List<String> names = productsPage.getProductNames();
         Assert.assertEquals(names.get(0), "Sauce Labs Backpack");
         Assert.assertEquals(names.get(5), "Test.allTheThings() T-Shirt (Red)");
@@ -45,9 +46,9 @@ public class ProductsTest extends BaseTest{
 
     @Test
     public void sortAscOrderPrice(){
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.sortAscOrderPrice();
+        productsPage.selectOption("Price (low to high)");
         List<String> names = productsPage.getProductNames();
         Assert.assertEquals(names.get(0), "Sauce Labs Onesie");
         Assert.assertEquals(names.get(5), "Sauce Labs Fleece Jacket");
@@ -55,9 +56,9 @@ public class ProductsTest extends BaseTest{
 
     @Test
     public void sortDescOrderPrice(){
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.sortDescOrderPrice();
+        productsPage.selectOption("Price (high to low)");
         List<String> names = productsPage.getProductNames();
         Assert.assertEquals(names.get(0), "Sauce Labs Fleece Jacket");
         Assert.assertEquals(names.get(5), "Sauce Labs Onesie");

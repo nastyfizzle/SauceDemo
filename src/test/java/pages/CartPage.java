@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CartPage extends BasePage {
+
     private static final By CART_ICON = By.cssSelector(".shopping_cart_link");
     private static final By CART_ITEM = By.cssSelector(".cart_item");
 
@@ -12,8 +13,8 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    public void openPage() {
-        driver.findElement(CART_ICON).click();
+    public void open() {
+        driver.get(BASE_URL + "/cart.html");
     }
 
     public void validateNumOfAddedProducts(int amount) {

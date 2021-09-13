@@ -18,11 +18,9 @@ public class BaseTest {
     CartPage cartPage;
 
     @BeforeMethod
-    public void setup(){
-        WebDriverManager.chromedriver().setup(); //check version of current Chrome -> download webdriver -> install
-        //WebDriverManager.chromedriver().browserVersion("93").setup(); specific version of browser
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
@@ -30,7 +28,7 @@ public class BaseTest {
         cartPage = new CartPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true) //close browser anyway, not depending on passed/failed test
+    @AfterMethod(alwaysRun = true)
     public void closeDriver() {
         driver.quit();
     }

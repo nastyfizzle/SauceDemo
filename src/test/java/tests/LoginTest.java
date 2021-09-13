@@ -2,45 +2,49 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest{
+import static org.testng.Assert.assertEquals;
+
+public class LoginTest extends BaseTest {
+
     @Test
     public void validLogin() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        assertEquals(productsPage.getHeader(), "PRODUCTS", "Wrong page is opened");
     }
 
     @Test
     public void loginWihtoutCredentials() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("", "");
-        loginPage.handleError("Epic sadface: Username is required");
+        assertEquals(loginPage.getError(), "Epic sadface: Username is required");
     }
 
     @Test
     public void loginWihtoutUsername() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("", "secret_sauce");
-        loginPage.handleError("Epic sadface: Username is required");
+        assertEquals(loginPage.getError(), "Epic sadface: Username is required");
     }
 
     @Test
     public void loginWihtoutPassword() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("standard_user", "");
-        loginPage.handleError("Epic sadface: Password is required");
+        assertEquals(loginPage.getError(), "Epic sadface: Password is required");
     }
 
     @Test
     public void invalidLogin() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("45", "45");
-        loginPage.handleError("Epic sadface: Username and password do not match any user in this service");
+        assertEquals(loginPage.getError(), "Epic sadface: Username and password do not match any user in this service");
     }
 
     @Test
     public void lockeOutUserTest() {
-        loginPage.openPage();
+        loginPage.open();
         loginPage.login("locked_out_user", "secret_sauce");
-        loginPage.handleError("Epic sadface: Sorry, this user has been locked out.");
+        assertEquals(loginPage.getError(), "Epic sadface: Sorry, this user has been locked out.");
     }
 }
