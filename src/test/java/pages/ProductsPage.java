@@ -9,10 +9,12 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.Assert.assertTrue;
+
 public class ProductsPage extends BasePage{
-    private String ADD_TO_CART_LOCATOR = "//*[contains(text(), '%s')]/../../..//button";
+    private String ADD_TO_CART_LOCATOR = "//*[text() = '%s']/ancestor::*[@class = 'inventory_item']//button";
     private static final String ADD_TO_CART_BUTTON = ".btn_inventory";
-    private String REMOVE_FROM_CART_PRODUCTS_PAGE = "//*[contains(text(), '%s')]/../../..//button";
+    private String REMOVE_FROM_CART_PRODUCTS_PAGE = "//*[text() = '%s']/ancestor::*[@class = 'inventory_item']//button";
     private static final By CART_BADGE = By.xpath("//*[contains(@class, 'shopping_cart_badge')]");
     private static final By DROPDOWN = By.xpath("//select[@class='product_sort_container']");
     private static final String PRODUCT_TITLE = ".inventory_item_name";
