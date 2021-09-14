@@ -28,7 +28,7 @@ public class ProductsPage extends BasePage {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
 
-//todo: методы addToCart и removeFromCart одинаковые, на мой вщгляд для наглядности эти два метода об актуальны, но не уверена, что это правильно
+//todo: методы addToCart и removeFromCart одинаковые, на мой взгляд для наглядности эти два метода об актуальны, но не уверена, что это правильно
     public void removeFromCart(String productName) {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
