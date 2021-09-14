@@ -14,12 +14,7 @@ public class ProductsPage extends BasePage {
     private String productButtonLocator = "//*[text() = '%s']/ancestor::*[@class = 'inventory_item']//button";
     private static final By DROPDOWN = By.xpath("//select[@class='product_sort_container']");
     private static final String PRODUCT_TITLE = ".inventory_item_name";
-
-    private static final String ADD_TO_CART_CSS = ".btn_inventory";
-
-    private static final By CART_BADGE = By.xpath("//*[contains(@class, 'shopping_cart_badge')]");
-
-
+//    private static final By REMOVE_BUTTON_XPATH = By.xpath("//*[text() = 'Remove']/ancestor::*[@class = 'inventory_item']//button");
 
     public ProductsPage(WebDriver driver) { //call constructor of parent class
         super(driver);
@@ -33,18 +28,13 @@ public class ProductsPage extends BasePage {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
 
+//todo: методы addToCart и removeFromCart одинаковые, на мой вщгляд для наглядности эти два метода об актуальны, но не уверена, что это правильно
     public void removeFromCart(String productName) {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
-
-//    public String getTextOfButton(String buttonName) {
-//        return driver.findElement(By.xpath(String.format(productButtonLocator, buttonName))).getText();
-//    }
-
-    //todo: cannot be performed, the reason in console is locator
-//    public void validateNumOfProducts(int amount) {
-//        waitForCartBadgeAmountToAppear(By.xpath(String.valueOf(CART_BADGE)));
-//        Assert.assertEquals(driver.findElements(CART_BADGE).size(), amount, "Amount is wrong");
+//todo: у меня не получилось реализовать метод для проверки изменения кнопки Add to cart на Remove. Нужна твоя помощь, Дима :)
+//    public boolean isProductAddedToCart(String productName) {
+//        return driver.findElement(REMOVE_BUTTON_XPATH).isDisplayed();
 //    }
 
     public void selectOption(String value) {
