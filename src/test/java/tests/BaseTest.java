@@ -5,26 +5,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.CartPage;
 import pages.LoginPage;
+import pages.ProductsPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     private WebDriver driver;
     LoginPage loginPage;
+    ProductsPage productsPage;
+    CartPage cartPage;
 
     @BeforeMethod
-    public void setup(){
-        WebDriverManager.chromedriver().setup(); //check version of current Chrome -> download webdriver -> install
-        //WebDriverManager.chromedriver().browserVersion("93").setup(); specific version of browser
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
+        cartPage = new CartPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true) //close browser anyway, not depending on passed/failed test
+    @AfterMethod(alwaysRun = true)
     public void closeDriver() {
         driver.quit();
     }
