@@ -14,8 +14,7 @@ public class ProductsTest extends BaseTest{
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Onesie");
-        cartPage.openByClickingOnCartButton();
-        assertEquals(cartPage.getAmountOfProducts(), 1, "Amount of products is wrong"); //todo: пока решила так проверить добавление и ниже удаление продукта в/из крозину/ы
+        assertEquals(productsPage.getButtonText("Sauce Labs Onesie"), "REMOVE", "Text of button is wrong");
     }
 
     @Test
@@ -24,8 +23,7 @@ public class ProductsTest extends BaseTest{
         loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.removeFromCart("Sauce Labs Backpack");
-        cartPage.openByClickingOnCartButton();
-        assertEquals(cartPage.getAmountOfProducts(), 0, "Amount of products is wrong");
+        assertEquals(productsPage.getButtonText("Sauce Labs Backpack"), "ADD TO CART", "Text of button is wrong");
     }
 
     @Test

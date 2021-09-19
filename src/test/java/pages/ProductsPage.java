@@ -14,7 +14,6 @@ public class ProductsPage extends BasePage {
     private String productButtonLocator = "//*[text() = '%s']/ancestor::*[@class = 'inventory_item']//button";
     private static final By DROPDOWN = By.xpath("//select[@class='product_sort_container']");
     private static final String PRODUCT_TITLE = ".inventory_item_name";
-//    private static final By REMOVE_BUTTON_XPATH = By.xpath("//*[text() = 'Remove']/ancestor::*[@class = 'inventory_item']//button");
 
     public ProductsPage(WebDriver driver) { //call constructor of parent class
         super(driver);
@@ -28,14 +27,13 @@ public class ProductsPage extends BasePage {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
 
-//todo: методы addToCart и removeFromCart одинаковые, на мой взгляд для наглядности эти два метода об актуальны, но не уверена, что это правильно
     public void removeFromCart(String productName) {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }
-//todo: у меня не получилось реализовать метод для проверки изменения кнопки Add to cart на Remove. Нужна твоя помощь, Дима :)
-//    public boolean isProductAddedToCart(String productName) {
-//        return driver.findElement(REMOVE_BUTTON_XPATH).isDisplayed();
-//    }
+
+    public String getButtonText(String productName) {
+        return driver.findElement(By.xpath(String.format(productButtonLocator, productName))).getText();
+    }
 
     public void selectOption(String value) {
         WebElement selectElement = driver.findElement(DROPDOWN);
