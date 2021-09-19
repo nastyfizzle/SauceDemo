@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -17,6 +16,7 @@ public class LoginPage extends BasePage {
 
     public void open() {
         driver.get(BASE_URL);
+        isVisible(LOGIN_BUTTON);
     }
 
     public void login(String userName, String password) {

@@ -23,6 +23,10 @@ public class ProductsPage extends BasePage {
         return driver.findElement(TITLE).getText();
     }
 
+    public void waitForElement() {
+        isVisible(TITLE);
+    }
+
     public void addToCart(String productName) {
         driver.findElement(By.xpath(String.format(productButtonLocator, productName))).click();
     }

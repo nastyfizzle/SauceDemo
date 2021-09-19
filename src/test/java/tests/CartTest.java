@@ -10,6 +10,7 @@ public class CartTest extends BaseTest{
     public void removeProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         cartPage.open();
         cartPage.removeItemFromCart("Sauce Labs Fleece Jacket");

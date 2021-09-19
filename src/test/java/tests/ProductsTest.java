@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class ProductsTest extends BaseTest{
 
@@ -13,6 +12,7 @@ public class ProductsTest extends BaseTest{
     public void addOneItem() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.addToCart("Sauce Labs Onesie");
         assertEquals(productsPage.getButtonText("Sauce Labs Onesie"), "REMOVE", "Text of button is wrong");
     }
@@ -21,6 +21,7 @@ public class ProductsTest extends BaseTest{
     public void removeOneItem() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.removeFromCart("Sauce Labs Backpack");
         assertEquals(productsPage.getButtonText("Sauce Labs Backpack"), "ADD TO CART", "Text of button is wrong");
@@ -30,6 +31,7 @@ public class ProductsTest extends BaseTest{
     public void sortDescOrderName() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.selectOption("Name (Z to A)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Test.allTheThings() T-Shirt (Red)", "Sorting is not correctly performed");
@@ -40,6 +42,7 @@ public class ProductsTest extends BaseTest{
     public void sortAscOrderName(){
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.selectOption("Name (A to Z)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Backpack");
@@ -50,6 +53,7 @@ public class ProductsTest extends BaseTest{
     public void sortAscOrderPrice(){
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.selectOption("Price (low to high)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Onesie");
@@ -60,6 +64,7 @@ public class ProductsTest extends BaseTest{
     public void sortDescOrderPrice(){
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.waitForElement();
         productsPage.selectOption("Price (high to low)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Fleece Jacket");
