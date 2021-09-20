@@ -3,6 +3,7 @@ package tests;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CartTest extends BaseTest{
 
@@ -10,7 +11,7 @@ public class CartTest extends BaseTest{
     public void removeProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.waitForElement();
+        assertTrue(productsPage.isPageOpened());
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         cartPage.open();
         cartPage.removeItemFromCart("Sauce Labs Fleece Jacket");

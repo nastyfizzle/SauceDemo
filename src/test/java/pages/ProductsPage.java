@@ -23,8 +23,9 @@ public class ProductsPage extends BasePage {
         return driver.findElement(TITLE).getText();
     }
 
-    public void waitForElement() {
+    public boolean isPageOpened() {
         isVisible(TITLE);
+        return true;
     }
 
     public void addToCart(String productName) {
