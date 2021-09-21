@@ -14,9 +14,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void open() {
+    public boolean isPageOpened() {
         driver.get(BASE_URL);
         isVisible(LOGIN_BUTTON);
+        return true;
     }
 
     public void login(String userName, String password) {
