@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(description = "Check successful authorization with valid credentials", retryAnalyzer = RetryAnalyzer.class, groups = {"Smoke"})
+    @Test(description = "Check successful authorization with valid credentials", groups = {"Smoke"})
     public void validLogin() {
         Assert.assertTrue(loginPage.isPageOpened());
         loginPage.login("standard_user", "secret_sauce");

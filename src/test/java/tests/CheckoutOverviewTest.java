@@ -37,7 +37,7 @@ public class CheckoutOverviewTest extends BaseTest {
         assertEquals(productsPage.getButtonText("Sauce Labs Onesie"), "REMOVE", "Text of button is wrong");
     }
 
-    @Test(description = "Check successful checkout when products have been added to the cart", retryAnalyzer = RetryAnalyzer.class, groups = {"Smoke"})
+    @Test(description = "Check successful checkout when products have been added to the cart", groups = {"Smoke"})
     public void successfulCheckoutWhenMultipleProductsAreAdded() {
         loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");

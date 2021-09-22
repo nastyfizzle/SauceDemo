@@ -2,8 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Smoke test suite" parallel="tests" thread-count="2">
     <listeners>
-        <listener class-name="tests.TestListener"/>
+        <listener class-name="tests.AnnotationTransformer"/>
     </listeners>
+
 
     <test name="Group 1">
         <parameter name="browser" value="chrome"/>
