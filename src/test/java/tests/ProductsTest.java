@@ -7,59 +7,65 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class ProductsTest extends BaseTest{
+public class ProductsTest extends BaseTest {
 
-    @Test
+    @Test(description = "Check adding one product to the cart", groups = {"Smoke"})
     public void addOneItem() {
-        loginPage.open();
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.addToCart("Sauce Labs Onesie");
         assertEquals(productsPage.getButtonText("Sauce Labs Onesie"), "REMOVE", "Text of button is wrong");
     }
 
-    @Test
+    @Test(description = "Check removing one product from the cart when it has been added to the cart", groups = {"Smoke"})
     public void removeOneItem() {
-        loginPage.open();
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.removeFromCart("Sauce Labs Backpack");
         assertEquals(productsPage.getButtonText("Sauce Labs Backpack"), "ADD TO CART", "Text of button is wrong");
     }
 
-    @Test
+    @Test(description = "Check sorting option: Name (Z to A)")
     public void sortDescOrderName() {
-        loginPage.open();
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.selectOption("Name (Z to A)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Test.allTheThings() T-Shirt (Red)", "Sorting is not correctly performed");
         assertEquals(names.get(5), "Sauce Labs Backpack", "Sorting is not correctly performed");
     }
 
-    @Test
-    public void sortAscOrderName(){
-        loginPage.open();
+    @Test(description = "Check sorting option: Name (A to Z)")
+    public void sortAscOrderName() {
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.selectOption("Name (A to Z)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Backpack");
         assertEquals(names.get(5), "Test.allTheThings() T-Shirt (Red)");
     }
 
-    @Test
-    public void sortAscOrderPrice(){
-        loginPage.open();
+    @Test(description = "Check sorting option: Price (low to high)")
+    public void sortAscOrderPrice() {
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.selectOption("Price (low to high)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Onesie");
         assertEquals(names.get(5), "Sauce Labs Fleece Jacket");
     }
 
-    @Test
-    public void sortDescOrderPrice(){
-        loginPage.open();
+    @Test(description = "Check sorting option: Price (high to low)")
+    public void sortDescOrderPrice() {
+        loginPage.isPageOpened();
         loginPage.login("standard_user", "secret_sauce");
+        assertTrue(productsPage.isPageOpened());
         productsPage.selectOption("Price (high to low)");
         List<String> names = productsPage.getProductNames();
         assertEquals(names.get(0), "Sauce Labs Fleece Jacket");
