@@ -51,21 +51,3 @@ profiles.</p>
 <p>To run necessary test methods the following command should be used:</p>
 
 `mvn -Dtest=TestName#MethodName`
-
-<p>Using Maven, you may now run any tests you want on whatever database and domain you want:</p>
-
-`mvn clean test -Dbrowser=CHROME -Dbase-address=<address> -Dgroups=<group> -Dlive-domain=<address>`
-
-<p>Example command:</p>
-
-`mvn clean test -Dbrowser=CHROME -Dbase-address=http://mediawiki119.wikia.com/ -Dgroups=Login`
-
-If everything goes right it should log in as a QATestsUser.
-
-Parameters
-The following are valid test parameters:
-
--Dbrowser - Which browser to use, for example "CHROME"
--Dbase-address - The base URL to run in the browser, for example "http://yourname.wikia-dev.com/"
--Dgroups - (Optional) Which test groups to run, for example "Chat". Optional. Uses all tests if omitted
--Dlive-domain - (Optional) The base URL to run in the browser, for example "http://www.wikia.com/". Only required for Hubs tests
