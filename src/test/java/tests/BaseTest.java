@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-    private WebDriver driver;
+    WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
@@ -43,6 +43,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeDriver() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
