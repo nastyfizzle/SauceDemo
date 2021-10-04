@@ -32,22 +32,31 @@ ___
 Each of these modules can be utilised independently of the others using maven<br>
 profiles.</p>
 
-<p>To run <strong>all</strong> modules run:</p>
+<p>To run <strong>all</strong> modules use the following command:</p>
 
 `mvn clean test`
 
-<p>To run <strong>Smoke Tests</strong> the following command should be used:</p>
+<p>To run <strong>Smoke Tests</strong> use the following command:</p>
 
-`mvn clean test -DsuiteXmlFile=src/test/resources/SmokeTest.xml`
+`mvn clean test -DsuiteXmlFile='src/test/resources/SmokeTest.xml'`
 
-<p>To run <strong>Regression Tests</strong> the following command should be used:</p>
+<p>To run <strong>Regression Tests</strong> use the following command:</p>
 
-`mvn clean test -DsuiteXmlFile=src/test/resources/RegressionTest.xml`
+`mvn clean test -DsuiteXmlFile='src/test/resources/RegressionTest.xml'`
 
-<p>To run necessary test classes the following command should be used:</p>
+<p>To run necessary test classes use the following command:</p>
 
 `mvn clean test -Dtest=TestName`
 
-<p>To run necessary test methods the following command should be used:</p>
+<p>To run only a subset of the tests in a test class use the following command:</p>
 
-`mvn -Dtest=TestName#MethodName`
+`mvn -Dtest=TestCircle#mytest test`
+
+###Parameters
+
+<p>The following are valid test parameters:</p>
+
+<ol>
+<li> `Dtest=TestName` - Which class of tests to run, for example LoginTests</li>
+<li> `TestName#MethodName` - Which methods in class of tests to run, for example LoginTests#validLogin</li>
+</ol>
