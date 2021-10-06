@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-    private WebDriver driver;
+    WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
@@ -23,7 +24,7 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
-    public void setup(@Optional("chrome") String browser) {
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -31,6 +32,8 @@ public class BaseTest {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
+        context.setAttribute("driver", driver);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         loginPage = new LoginPage(driver);
@@ -43,6 +46,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeDriver() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

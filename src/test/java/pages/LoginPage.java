@@ -1,7 +1,9 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import tests.AllureUtils;
 
 public class LoginPage extends BasePage {
 
@@ -20,7 +22,9 @@ public class LoginPage extends BasePage {
         return true;
     }
 
+    @Step("Login using credentials: '{userName}' and '{password}'")
     public void login(String userName, String password) {
+        //AllureUtils.takeScreenshot(driver);
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
