@@ -21,19 +21,19 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="Group 2">
-        <parameter name="browser" value="edge"/>
-        <groups>
-            <run>
-                <include name="Smoke"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="tests.LoginTest"/>
-            <class name="tests.ProductsTest"/>
-            <class name="tests.CheckoutTest"/>
-            <class name="tests.CheckoutOverviewTest"/>
-        </classes>
-    </test> <!-- Test -->
+<!--    <test name="Group 2">-->
+<!--        <parameter name="browser" value="edge"/>-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="Smoke"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <classes>-->
+<!--            <class name="tests.LoginTest"/>-->
+<!--            <class name="tests.ProductsTest"/>-->
+<!--            <class name="tests.CheckoutTest"/>-->
+<!--            <class name="tests.CheckoutOverviewTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
 
 </suite>
