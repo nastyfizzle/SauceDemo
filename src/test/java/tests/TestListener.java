@@ -33,9 +33,9 @@ public class TestListener implements ITestListener {
         //Create bug in JIRA via API
         //API requests to QASE to set red status
         //Take a screenshot
-//        Object object = iTestResult.getTestContext().getAttribute("driver");
-//        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
-//        AllureUtils.takeScreenshot(driver);
+        //Object object = iTestResult.getTestContext().getAttribute("driver");
+        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
+        AllureUtils.takeScreenshot(driver);
         System.out.println(String.format("======================================== FAILED TEST %s Duration: %ss ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
         takeScreenshot(iTestResult);
