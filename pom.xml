@@ -12,6 +12,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <suiteXmlFile>src/test/resources/SmokeTest.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/RegressionTest.xml</suiteXmlFile>
         <testng.version>7.4.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <bonigarcia.version>5.0.1</bonigarcia.version>
