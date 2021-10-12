@@ -33,12 +33,11 @@ public class TestListener implements ITestListener {
         //Create bug in JIRA via API
         //API requests to QASE to set red status
         //Take a screenshot
-//        Object object = iTestResult.getTestContext().getAttribute("driver");
-//        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
-//        AllureUtils.takeScreenshot(driver);
+        //Object object = iTestResult.getTestContext().getAttribute("driver");
+        WebDriver driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
+        AllureUtils.takeScreenshot(driver);
         System.out.println(String.format("======================================== FAILED TEST %s Duration: %ss ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
-        takeScreenshot(iTestResult);
     }
 
     @Override
@@ -66,20 +65,5 @@ public class TestListener implements ITestListener {
 
     private long getExecutionTime(ITestResult iTestResult) {
         return TimeUnit.MILLISECONDS.toSeconds(iTestResult.getEndMillis() - iTestResult.getStartMillis());
-    }
-
-    @Attachment(value = "Last screen state", type = "image/png")
-    private byte[] takeScreenshot(ITestResult iTestResult) {
-        ITestContext context = iTestResult.getTestContext();
-        try {
-            WebDriver driver = (WebDriver) context.getAttribute("driver");
-            if (driver != null) {
-                return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            } else {
-                return new byte[]{};
-            }
-        } catch (NoSuchSessionException | IllegalStateException ex) {
-            return new byte[]{};
-        }
     }
 }
