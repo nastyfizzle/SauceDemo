@@ -5,7 +5,10 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
     }
-    properties([parameters([booleanParam(defaultValue: true, name: 'HEADLESS')])])
+
+    parameters {
+           booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Headless browser')
+        }
 
     stages {
         stage('Build') {
@@ -39,7 +42,7 @@ pipeline {
                                  reportBuildPolicy: 'ALWAYS',
                                  results: [[path: 'target/allure-results']]
                         ])
-                }
+                 }
             }
         }
     }
