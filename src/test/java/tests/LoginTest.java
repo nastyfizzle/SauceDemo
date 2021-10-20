@@ -33,7 +33,7 @@ public class LoginTest extends BaseTest {
         assertEquals(productsPage.getHeader(), "PRODUCTS", "Wrong page is opened");
     }
 
-    @Test(description = "Check not successful aithorization with invalid credentials", dataProvider = "dataForLogin")
+    @Test(description = "Check not successful authorization with invalid credentials", dataProvider = "dataForLogin")
     public void invalidLogin(String username, String password, String errorText) {
         loginPage.isPageOpened();
         loginPage.login(username, password);
